@@ -1,6 +1,8 @@
 export default class RestoService {
-    async getMenuItems() {
-        const res = await fetch(`https://www.anapioficeandfire.com/api/`);
+    url = 'https://www.anapioficeandfire.com/api/';
+
+     getMenuItems = async () => {
+        const res = await fetch(this.url);
             if (!res.ok){
             throw new Error(`Could not fetch , status: ${res.status}`)
             }
