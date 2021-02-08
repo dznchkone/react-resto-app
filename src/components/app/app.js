@@ -10,7 +10,7 @@ import Background from './food-bg.jpg';
 
 const App = ({RestoService}) => {
     RestoService.getMenuItems()
-    .then(menu = >console.log(menu))
+    .then(menu =>console.log(menu))
     .catch(error =>{
         console.log(`Произошла ошибка: ${error}`)
     });
