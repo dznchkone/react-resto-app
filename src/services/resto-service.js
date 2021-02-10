@@ -1,5 +1,5 @@
 export default class RestoService {
-    url = 'https://www.anapioficeandfire.com/api/';
+    url = 'http://localhost:3000/menu/';
 
      getMenuItems = async () => {
         const res = await fetch(this.url);
