@@ -1,0 +1,9 @@
+.wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.wrap .menu__item{
+  margin-top: 50px;
+}

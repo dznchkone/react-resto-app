@@ -11,7 +11,15 @@ const menuRequested = () => {
     };
 };
 
+const menuLoadError = (e) => {
+    console.error(e);
+    return {
+        type: 'MENU_LOAD_ERROR'
+    }
+}
+
 export {
     menuLoaded,
-    menuRequested
+    menuRequested,
+    menuLoadError
 };
