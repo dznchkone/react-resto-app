@@ -60,7 +60,7 @@ const View = ({item}) => {
                 <button className="menu__btn">Add to cart</button>
             </li>
         </div>
-
+//TODO: сделать кнопку добавить в корзину
     )
 }
 

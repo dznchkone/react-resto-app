@@ -18,8 +18,31 @@ const menuLoadError = (e) => {
     }
 }
 
+const addedToCart = (id) => {
+    return {
+        type: 'ITEM_ADD_TO_CART',
+        payload: id
+    };
+};
+
+const deleteFromCart = (id) => {
+    return {
+        type: 'ITEM_REMOVE_FROM_CART',
+        payload: id
+    };
+};
+
+const calcTotalPrice = () => {
+    return {
+        type: 'CALC_TOTAL_PRICE'
+    }
+}
+
 export {
     menuLoaded,
     menuRequested,
-    menuLoadError
+    menuLoadError,
+    addedToCart,
+    deleteFromCart,
+    calcTotalPrice
 };

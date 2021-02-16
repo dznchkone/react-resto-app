@@ -32,6 +32,12 @@
             width: 250px;
             object-fit: cover;
         }
+        &-counter {
+            width: 150px;
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+        }
     }
     &__close {
         position: absolute;
@@ -44,6 +50,21 @@
         font-size: 20px;
         border-radius: 100%;
         border: 1px solid #fff;
+        cursor: pointer;
+    }
+    &__order {
+        width: 250px;
+        height: 40px;
+        font-size: 30px;
+        color: #fff;
+        text-align: center;
+        font-weight: 300;
+        margin: 40px auto 0 auto;
+        text-transform: uppercase;
+        border: 1px solid rgba(256,256,256, .2);
+        background-color: rgba(0,0,0,.7);
+        box-shadow: 0 0 20px rgba(256,256,256, .1);
+        position: relative;
         cursor: pointer;
     }
 }
