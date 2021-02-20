@@ -1,5 +1,5 @@
 export default class RestoService {
-    _apiBase = 'http://localhost:3001/';
+    _apiBase = 'https://my-json-server.typicode.com/dznchkone/react-resto-app/';
 
      getMenuItems = async () => {
          let answer;

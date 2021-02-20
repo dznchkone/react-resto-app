@@ -35,8 +35,8 @@ const deleteFromCart = (id) => {
 const calcTotalPrice = () => {
     return {
         type: 'CALC_TOTAL_PRICE'
-    }
-}
+    };
+};
 
 export {
     menuLoaded,

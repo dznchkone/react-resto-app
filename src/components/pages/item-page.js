@@ -22,7 +22,7 @@ class ItemPage extends Component {
     }
 
     render() {
-        const {menuItems, loading, error} = this.props;
+        const {menuItems, loading, error, addedToCart, calcTotalPrice} = this.props;
         const item = menuItems.find(item=>+item.id === +this.props.match.params.id);
         if (error) {
             return <Error/>;
@@ -30,54 +30,24 @@ class ItemPage extends Component {
         if (loading) {
             return <Spinner/>
         }
-        return <View item={item}/>
+        return <View item={item} addedToCart={addedToCart} calcTotalPrice={calcTotalPrice}/>
     }
 }
 
-const View = ({item}) => {
-    // const {title, price, url, category} = item;
-    // let icon;
-    // switch (category) {
-    //     case 'salads':
-    //         icon = 'leaf';
-    //         break;
-    //     case 'pizza':
-    //         icon = 'pizza-slice';
-    //         break;
-    //     case 'meat':
-    //         icon = 'drumstick-bite';
-    //         break;
-    //     default:
-    //         icon = 'leaf';
-    //         break;
-    // }
-    // return (
-    //     <div className="wrap">
-    //         <li className="menu__item">
-    //             <div className="menu__title">{title}</div>
-    //             <img className="menu__img" src={url} alt={title}></img>
-    //             <div className="menu__category">Category: <span>{category}</span> <i className={`fa fa-${icon}`}></i></div>
-    //             <div className="menu__price">Price: <span>{price}$</span></div>
-    //             <button className="menu__btn">Add to cart</button>
-    //         </li>
-    //     </div>
-
-    // )
+const View = ({item, addedToCart, calcTotalPrice}) => {
     return (
         <div className="wrap">
             <MenuListItem
-            menuItem={item}
-            onAddToCart={(id) =>{
-                        addedToCart(id);
-                        calcTotalPrice()
-                    }
+                menuItem={item}
+                onAddToCart={(id) =>{
+                            addedToCart(id);
+                            calcTotalPrice()
+                }
             }/>
         </div>
     )
 
 }
-
-//TODO: сделать кнопку добавить в корзину
 
 const mapStateToProps = state => {
     return {
