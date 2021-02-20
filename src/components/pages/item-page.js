@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import WithRestoService from '../hoc';
-import {menuLoaded, menuRequested, menuLoadError} from '../../actions';
+import {menuLoaded, menuRequested, menuLoadError, addedToCart, calcTotalPrice} from '../../actions';
 import Spinner from '../spinner';
 import Error from "../error";
+import MenuListItem from '../menu-list-item';
 
 import './item-page.scss'
 
@@ -34,35 +35,49 @@ class ItemPage extends Component {
 }
 
 const View = ({item}) => {
-    const {title, price, url, category} = item;
-    let icon;
-    switch (category) {
-        case 'salads':
-            icon = 'leaf';
-            break;
-        case 'pizza':
-            icon = 'pizza-slice';
-            break;
-        case 'meat':
-            icon = 'drumstick-bite';
-            break;
-        default:
-            icon = 'leaf';
-            break;
-    }
+    // const {title, price, url, category} = item;
+    // let icon;
+    // switch (category) {
+    //     case 'salads':
+    //         icon = 'leaf';
+    //         break;
+    //     case 'pizza':
+    //         icon = 'pizza-slice';
+    //         break;
+    //     case 'meat':
+    //         icon = 'drumstick-bite';
+    //         break;
+    //     default:
+    //         icon = 'leaf';
+    //         break;
+    // }
+    // return (
+    //     <div className="wrap">
+    //         <li className="menu__item">
+    //             <div className="menu__title">{title}</div>
+    //             <img className="menu__img" src={url} alt={title}></img>
+    //             <div className="menu__category">Category: <span>{category}</span> <i className={`fa fa-${icon}`}></i></div>
+    //             <div className="menu__price">Price: <span>{price}$</span></div>
+    //             <button className="menu__btn">Add to cart</button>
+    //         </li>
+    //     </div>
+
+    // )
     return (
         <div className="wrap">
-            <li className="menu__item">
-                <div className="menu__title">{title}</div>
-                <img className="menu__img" src={url} alt={title}></img>
-                <div className="menu__category">Category: <span>{category}</span> <i className={`fa fa-${icon}`}></i></div>
-                <div className="menu__price">Price: <span>{price}$</span></div>
-                <button className="menu__btn">Add to cart</button>
-            </li>
+            <MenuListItem
+            menuItem={item}
+            onAddToCart={(id) =>{
+                        addedToCart(id);
+                        calcTotalPrice()
+                    }
+            }/>
         </div>
-//TODO: сделать кнопку добавить в корзину
     )
+
 }
+
+//TODO: сделать кнопку добавить в корзину
 
 const mapStateToProps = state => {
     return {
@@ -74,7 +89,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     menuLoaded,
     menuRequested,
-    menuLoadError
+    menuLoadError,
+    addedToCart,
+    calcTotalPrice
 };
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ItemPage));
